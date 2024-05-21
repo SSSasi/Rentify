@@ -1,0 +1,50 @@
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@SpringBootApplication
+@Controller
+public class RentifyApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(RentifyApplication.class, args);
+    }
+
+    @RequestMapping("/")
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("user", new User());
+        return "registration";
+    }
+
+    @PostMapping("/register")
+    public String register(User user) {
+        // Save user data to the database or perform necessary actions
+        return "redirect:/";
+    }
+
+    @GetMapping("/properties")
+    public String showProperties(Model model) {
+        // Retrieve property data from the database and pass it to the view
+        return "properties";
+    }
+}
+
+class User {
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phoneNumber;
+    private String role;
+    private String propertyName;
+    private String area;
+    private int bedrooms;
+    private int bathrooms;
+
+    // Getters and setters
+}
